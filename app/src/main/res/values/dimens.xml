@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="padding_default">8dp</dimen>
+    <dimen name="margin_default">8dp</dimen>
+    <dimen name="margin_horizontal_add_buttons">32dp</dimen>
+    <dimen name="text_size_default">14sp</dimen>
+</resources>

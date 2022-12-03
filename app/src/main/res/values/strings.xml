@@ -1,0 +1,15 @@
+<resources>
+    <string name="app_name">RainbowSmileTask</string>
+    <string name="btn_add_start">+ start</string>
+    <string name="btn_add_end">+ end</string>
+    <string name="add_count_title">Количество копирований:</string>
+    <string name="not_set_document_property">Not set</string>
+
+    <!--  rv item titles  -->
+    <string name="id_pos">idPos</string>
+    <string name="id_record">idRecord</string>
+    <string name="nom_route">nomRoute</string>
+    <string name="nom_zak">nomZak</string>
+    <string name="id_hd_route">idHdRoute</string>
+    <string name="nom_nakl">nomNakl</string>
+</resources>

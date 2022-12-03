@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".mainscreen.MainActivity">
+
+    <TextView
+        android:id="@+id/text_add_count_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:padding="@dimen/padding_default"
+        android:text="@string/add_count_title"
+        android:textSize="@dimen/text_size_default"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/text_add_count"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:ellipsize="end"
+        android:maxLines="1"
+        android:padding="@dimen/padding_default"
+        android:text="0"
+        android:textSize="@dimen/text_size_default"
+        app:layout_constraintEnd_toStartOf="@+id/image_button_refresh"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toEndOf="@id/text_add_count_title"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ImageButton
+        android:id="@+id/image_button_refresh"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:padding="@dimen/padding_default"
+        android:src="@drawable/ic_baseline_refresh_24"
+        android:background="@color/transparent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"/>
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recycler_documents"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_margin="@dimen/margin_default"
+        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+        android:background="@drawable/shape_rounded_documents_list"
+        android:scrollbars="vertical"
+        app:layout_constraintBottom_toTopOf="@+id/linear_layout_controls_container"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/text_add_count_title"
+        app:layout_constraintVertical_bias="0.0"
+        tools:listitem="@layout/rv_item_document" />
+
+    <LinearLayout
+        android:id="@+id/linear_layout_controls_container"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent">
+
+        <Button
+            android:id="@+id/button_add_start"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="@dimen/margin_horizontal_add_buttons"
+            android:layout_weight="3"
+            android:text="@string/btn_add_start" />
+
+        <Button
+            android:id="@+id/button_add_end"
+            android:layout_width="0dp"
+            android:layout_marginHorizontal="@dimen/margin_horizontal_add_buttons"
+            android:layout_height="wrap_content"
+            android:layout_weight="3"
+            android:text="@string/btn_add_end" />
+
+    </LinearLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

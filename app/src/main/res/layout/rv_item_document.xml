@@ -1,0 +1,147 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/constraint_layout_root_view"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical">
+
+    <TextView
+        android:id="@+id/text_id_pos_title"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:padding="@dimen/padding_default"
+        android:text="@string/id_pos"
+        android:textSize="@dimen/text_size_default"
+        app:layout_constraintEnd_toEndOf="@id/text_id_hd_route_title"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/text_id_pos"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:ellipsize="end"
+        android:maxLines="1"
+        android:padding="@dimen/padding_default"
+        android:text="@string/not_set_document_property"
+        android:textSize="@dimen/text_size_default"
+        app:layout_constraintStart_toEndOf="@id/text_id_hd_route_title"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/text_id_record_title"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:padding="@dimen/padding_default"
+        android:text="@string/id_record"
+        android:textSize="@dimen/text_size_default"
+        app:layout_constraintEnd_toEndOf="@id/text_id_hd_route_title"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/text_id_pos_title" />
+
+    <TextView
+        android:id="@+id/text_id_record"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:ellipsize="end"
+        android:maxLines="1"
+        android:padding="@dimen/padding_default"
+        android:text="@string/not_set_document_property"
+        android:textSize="@dimen/text_size_default"
+        app:layout_constraintStart_toEndOf="@id/text_id_hd_route_title"
+        app:layout_constraintTop_toBottomOf="@id/text_id_pos" />
+
+    <TextView
+        android:id="@+id/text_nom_route_title"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:padding="@dimen/padding_default"
+        android:text="@string/nom_route"
+        android:textSize="@dimen/text_size_default"
+        app:layout_constraintEnd_toEndOf="@id/text_id_hd_route_title"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/text_id_record_title" />
+
+    <TextView
+        android:id="@+id/text_nom_route"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:ellipsize="end"
+        android:maxLines="1"
+        android:padding="@dimen/padding_default"
+        android:text="@string/not_set_document_property"
+        android:textSize="@dimen/text_size_default"
+        app:layout_constraintStart_toEndOf="@id/text_id_hd_route_title"
+        app:layout_constraintTop_toBottomOf="@id/text_id_record" />
+
+
+    <TextView
+        android:id="@+id/text_nom_zak_title"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:padding="@dimen/padding_default"
+        android:text="@string/nom_zak"
+        android:textSize="@dimen/text_size_default"
+        app:layout_constraintEnd_toEndOf="@id/text_id_hd_route_title"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/text_nom_route_title" />
+
+    <TextView
+        android:id="@+id/text_nom_zak"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:ellipsize="end"
+        android:maxLines="1"
+        android:padding="@dimen/padding_default"
+        android:text="@string/not_set_document_property"
+        android:textSize="@dimen/text_size_default"
+        app:layout_constraintStart_toEndOf="@id/text_id_hd_route_title"
+        app:layout_constraintTop_toBottomOf="@id/text_nom_route" />
+
+    <TextView
+        android:id="@+id/text_id_hd_route_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:padding="@dimen/padding_default"
+        android:text="@string/id_hd_route"
+        android:textSize="@dimen/text_size_default"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/text_nom_zak_title" />
+
+    <TextView
+        android:id="@+id/text_id_hd_route"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:ellipsize="end"
+        android:maxLines="1"
+        android:padding="@dimen/padding_default"
+        android:text="@string/not_set_document_property"
+        android:textSize="@dimen/text_size_default"
+        app:layout_constraintStart_toEndOf="@id/text_id_hd_route_title"
+        app:layout_constraintTop_toBottomOf="@id/text_nom_zak" />
+
+    <TextView
+        android:id="@+id/text_nom_nakl_title"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:padding="@dimen/padding_default"
+        android:text="@string/nom_nakl"
+        android:textSize="@dimen/text_size_default"
+        app:layout_constraintEnd_toEndOf="@id/text_id_hd_route_title"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/text_id_hd_route_title" />
+
+    <TextView
+        android:id="@+id/text_nom_nakl"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:ellipsize="end"
+        android:maxLines="1"
+        android:padding="@dimen/padding_default"
+        android:text="@string/not_set_document_property"
+        android:textSize="@dimen/text_size_default"
+        app:layout_constraintStart_toEndOf="@id/text_id_hd_route_title"
+        app:layout_constraintTop_toBottomOf="@id/text_id_hd_route" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
