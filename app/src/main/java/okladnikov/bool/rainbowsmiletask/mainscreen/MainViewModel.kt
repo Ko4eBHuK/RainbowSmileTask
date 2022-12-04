@@ -6,7 +6,6 @@ import androidx.lifecycle.viewModelScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.*
 import kotlinx.coroutines.launch
-import okladnikov.bool.rainbowsmiletask.model.DocumentDescription
 import okladnikov.bool.rainbowsmiletask.repository.DocumentsRepository
 
 class MainViewModel : ViewModel() {
@@ -29,6 +28,7 @@ class MainViewModel : ViewModel() {
                         currentState.copy(
                             numberOfAdds = 0,
                             documents = mutableListOf(),
+                            selectedDocumentPosition = null,
                             toastMessage = "Случилась проблема с запросом\nНажмите кнопку refresh"
                         )
                     }
@@ -45,22 +45,47 @@ class MainViewModel : ViewModel() {
         }
     }
 
-    fun addToEnd(document: DocumentDescription) {
+    fun addSelectedToEnd() {
         _uiState.update { currentState ->
+            if (currentState.selectedDocumentPosition != null)
             currentState.copy(
                 numberOfAdds = currentState.numberOfAdds + 1,
-                documents = currentState.documents.apply { add(document) },
+                documents = currentState.documents.apply { add(currentState.documents[currentState.selectedDocumentPosition]) },
                 toastMessage = null
+            )
+            else currentState.copy(
+                toastMessage = "Не выбран элемент для копирования"
             )
         }
     }
 
-    fun addToStart(document: DocumentDescription) {
+    fun addSelectedToStart() {
         _uiState.update { currentState ->
+            if (currentState.selectedDocumentPosition != null)
+                currentState.copy(
+                    numberOfAdds = currentState.numberOfAdds + 1,
+                    documents = currentState.documents.apply { add(0, currentState.documents[currentState.selectedDocumentPosition]) },
+                    toastMessage = null,
+                    selectedDocumentPosition = currentState.selectedDocumentPosition + 1
+                )
+            else currentState.copy(
+                toastMessage = "Не выбран элемент для копирования"
+            )
+        }
+    }
+
+    fun selectDocumentAtPosition(position: Int) {
+        if (position in 0.._uiState.value.documents.size)
+            _uiState.update { currentState ->
+                currentState.copy(
+                    selectedDocumentPosition = position,
+                    toastMessage = "Выбран ${position + 1} элемент"
+                )
+            }
+        else _uiState.update { currentState ->
             currentState.copy(
-                numberOfAdds = currentState.numberOfAdds + 1,
-                documents = currentState.documents.apply { add(0, document) },
-                toastMessage = null
+                toastMessage = "Ошибка при выборе элемента из списка." +
+                        "\nНет элемента с такой позицией"
             )
         }
     }
@@ -68,6 +93,7 @@ class MainViewModel : ViewModel() {
     fun sortDocuments() {
         _uiState.update { currentState ->
             currentState.copy(
+                selectedDocumentPosition = null,
                 toastMessage = "Отсортировано по полю nomZak"
             ).apply { documents.sortBy { it.nomZak } }
         }

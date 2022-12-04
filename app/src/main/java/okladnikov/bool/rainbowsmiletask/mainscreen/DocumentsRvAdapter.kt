@@ -5,15 +5,16 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
-import android.widget.Toast
 import androidx.constraintlayout.widget.ConstraintLayout
+import androidx.core.view.children
 import androidx.recyclerview.widget.RecyclerView
 import okladnikov.bool.rainbowsmiletask.R
 import okladnikov.bool.rainbowsmiletask.model.DocumentDescription
 
 class DocumentsRvAdapter(
-    private val documents: List<DocumentDescription>,
-    private val context: Context
+    var documents: List<DocumentDescription>,
+    private val context: Context,
+    private val viewModel: MainViewModel
 ) : RecyclerView.Adapter<DocumentsRvAdapter.DocumentViewHolder>() {
 
     class DocumentViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
@@ -35,6 +36,24 @@ class DocumentsRvAdapter(
     }
 
     override fun onBindViewHolder(holder: DocumentViewHolder, position: Int) {
+        // Display selected item
+        if (position == viewModel.uiState.value.selectedDocumentPosition)
+            applySelectedStyle(holder)
+        else applyDefaultStyle(holder)
+
+        // Add space between items
+        if (position > 0) holder.constraintLayoutRootView.setPadding(
+            0,
+            context.resources.getDimensionPixelSize(R.dimen.padding_default),
+            0,
+            0
+        ) else holder.constraintLayoutRootView.setPadding(
+            0,
+            0,
+            0,
+            0
+        )
+
         holder.idPosTextView.text =
             if (documents[position].idPos == null) "Not set" else documents[position].idPos.toString()
         holder.idRecordTextView.text =
@@ -47,15 +66,21 @@ class DocumentsRvAdapter(
 
         // Make item clickable
         holder.constraintLayoutRootView.setOnClickListener {
-            // TODO - implement select logic
-//            Log.e(this.javaClass.simpleName, "item with idPos = ${documents[position].idPos} clicked")
-            Toast.makeText(
-                context,
-                "item with idPos = ${documents[position].idPos} clicked",
-                Toast.LENGTH_SHORT
-            ).show()
+            viewModel.selectDocumentAtPosition(position)
         }
     }
 
     override fun getItemCount() = documents.size
+
+    private fun applySelectedStyle(holder: DocumentViewHolder) {
+        holder.constraintLayoutRootView.children.forEach {
+            it.setBackgroundColor(context.resources.getColor(R.color.transparent))
+        }
+    }
+
+    private fun applyDefaultStyle(holder: DocumentViewHolder) {
+        holder.constraintLayoutRootView.children.forEach {
+            it.setBackgroundColor(context.resources.getColor(R.color.white))
+        }
+    }
 }
